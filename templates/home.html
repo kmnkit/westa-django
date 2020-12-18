@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block page_title %}Home{% endblock %}
+{% block content %}
+<main class='grid-center w-full h-screen'>
+    <div class="container grid grid-cols-2 gap-4 w-96 h-96 flex">
+        <div style="background-image: url('../static/img/nature.jpeg');" class='w-full bg-center bg-cover'></div>
+        <div class="w-full h-full border border-grey-300 flex flex-col align-center">
+            <div class="block flex flex-col h-1/2 grid-center">
+                <span>아이디가 있으세요?</span>
+                <a href="{% url 'users:login' %}" class='link'>로그인하러 가기</a>
+            </div>
+            <hr />
+            <div class="block h-1/2 grid-center">
+                <a href="{% url 'users:signup' %}" class='link'>회원가입 하러가기</a>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}
+    

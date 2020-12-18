@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block page_title %}로그인{% endblock %}
+{% block content %}
+    <main class="grid-center h-screen">
+        <div class="container w-72 h-auto rounded ring-2 ring-purple-500">
+            {% include 'mixins/form.html' with form=form cta='로그인' %}
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,7 @@
+<header>
+    {% if user.is_authenticated %}
+    {% else %}
+        <a href="{% url 'users:login' %}">로그인</a>
+        <a href="{% url 'users:signup' %}">회원가입</a>
+    {% endif %}
+</header>
