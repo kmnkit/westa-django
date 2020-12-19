@@ -10,12 +10,7 @@ class UserAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets + (
         (
             "Personal Info",
-            {
-                "fields": (
-                    "nickname",
-                    "birthday",
-                )
-            },
+            {"fields": ("nickname", "birthday", "avatar")},
         ),
     )
 
