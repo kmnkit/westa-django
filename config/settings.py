@@ -133,4 +133,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
 
 MEDIA_URL = "/media/"
 
-LOGIN_REDIRECT_URL = "core:home"
+LOGIN_URL = "/user/login/"
+
+LOGIN_REDIRECT_URL = "posts:list"
+
+LOGOUT_REDIRECT_URL = "core:home"
