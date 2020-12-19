@@ -14,11 +14,10 @@ class Post(TimeStampedModel):
     def __str__(self):
         return self.description
 
+    def upload_path(self, filename):
+        if not self.pk:
+            instance = Post.objects.create()
+            self.id = self.pk = instance.id
+        return f"post_photos/{self.id}"
 
-class Photo(TimeStampedModel):
-    post = models.ForeignKey("Post", related_name="photos", on_delete=models.CASCADE)
-    photo = models.ImageField()
-    caption = models.TextField()
-
-    def __str__(self):
-        return self.caption
+    photo = models.ImageField(null=True, blank=True, upload_to=upload_path)
