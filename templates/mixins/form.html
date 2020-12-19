@@ -1,19 +1,14 @@
 <div class="w-full p-4">
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data" class='mt-14'>
         {% csrf_token %}
-        {% if form.non_field_error %}
+        {% if form.non_field_errors %}
             {% for error in form.non_field_errors %}
-                <span>{{error}}</span>
+                <span class="text-red-700 font-medium text-sm">{{error}}</span>
             {% endfor %}
         {% endif %}
         {% for field in form %}
-            <div>
-                <label>{{field.label}}</label>
-                <div>
-                    {{field}}
-                </div>
-            </div>
+            {% include 'mixins/form_input.html' with field=field %}
         {% endfor %}
-        <button class="submit-btn">{{cta}}</button>
+        <button class="submit-btn"><span>{{cta}}</span></button>
     </form>
 </div>

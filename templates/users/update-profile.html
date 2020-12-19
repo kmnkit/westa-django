@@ -5,6 +5,11 @@
 {% endblock page_title %}
 
 {% block content %}
-    
+    <div>
+        {% include 'mixins/form.html' with form=form cta="프로필 수정" %}
+    </div>
+    <div>
+        <a href="{% url 'users:password' %}">비밀번호 변경</a>
+    </div>
 {% endblock content %}
     

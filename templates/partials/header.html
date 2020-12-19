@@ -1,7 +1,14 @@
-<header>
-    {% if user.is_authenticated %}
-    {% else %}
-        <a href="{% url 'users:login' %}">로그인</a>
-        <a href="{% url 'users:signup' %}">회원가입</a>
-    {% endif %}
+<header class="w-full absolute top-0 flex justify-between h-14 content-center px-4">
+    <div class="app-name flex flex-wrap content-center">
+        <a href="{% url 'core:home' %}"><span class="text-3xl">Westagram</span></a>
+    </div>
+    <div class="text-xl flex flex-wrap content-center menu-item">
+        {% if user.is_authenticated %}
+            <a class="link user-ctrl" href="{% url 'users:logout' %}">로그아웃</a>
+            <a class="link user-ctrl" href="{% url 'users:user' user.pk %}">프로필</a>
+        {% else %}
+            <a class="link user-ctrl" href="{% url 'users:login' %}">로그인</a>
+            <a class="link user-ctrl" href="{% url 'users:signup' %}">회원가입</a>
+        {% endif %}
+    </div>
 </header>

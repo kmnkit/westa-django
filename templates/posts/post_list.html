@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    홈
+{% endblock page_title %}
+    
+{% block content %}
+<main class="flex justify-center">
+    <div class="container w-96 h-full">
+        {% for post in posts %}
+            {% include 'mixins/post_card.html' with post=post %}
+        {% endfor %}
+            
+    </div>
+</main>
+{% endblock content %}
+    

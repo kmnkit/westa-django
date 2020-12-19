@@ -1,2 +1,7 @@
 {% extends 'base.html' %}
 {% block page_title %}회원가입{% endblock %}
+
+{% block content %}
+    {% include 'mixins/form.html' with form=form cta="회원가입" %}
+{% endblock content %}
+    

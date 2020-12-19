@@ -1,14 +1,24 @@
 {% extends 'base.html' %}
 
 {% block page_title %}
-{{user_obj.first_name}}의 프로필
+{{user_obj.nickname}}의 프로필
 {% endblock page_title %}
 
-
 {% block content %}
-    <div>
-        <h1>{{user_obj.first_name}}</h1>
-        <a href="{% url 'users:update-profile' %}"></a>
+<main class="w-full flex justify-center mt-16">
+    <div class="container border-solid border-2 border-opacity-50 border-gray-500 p-10 flex w-1/2">
+        <div style="background-image:url({{user_obj.avatar.url}})" class="w-48 h-48 bg-center bg-cover rounded-full"></div>
+        <div class="flex flex-col mx-6">
+            <div class="flex items-center h-16">
+                <h1 class="font-bold text-2xl mt-5">{{user_obj.nickname}}</h1>
+                <a href="{% url 'users:profile-update' %}" class="submit-btn ml-5"><span>프로필 편집</span></a>
+            </div>
+            <div>
+                <span>게시물 {{user_obj.posts.count}}</span>
+            </div>
+        </div>
     </div>
+    <hr />
+</main>
 {% endblock content %}
     
