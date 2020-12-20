@@ -11,3 +11,6 @@ class Comment(TimeStampedModel):
         "posts.Post", related_name="comments", on_delete=models.CASCADE
     )
     text = models.TextField()
+
+    def __str__(self):
+        return self.text
