@@ -7,9 +7,6 @@ class Post(TimeStampedModel):
         "users.User", related_name="posts", on_delete=models.CASCADE
     )
     description = models.TextField(max_length=500, blank=True)
-    fav_users = models.ManyToManyField(
-        "users.User",
-    )
 
     def __str__(self):
         return self.description
@@ -21,3 +18,7 @@ class Post(TimeStampedModel):
         return f"post_photos/{self.id}"
 
     photo = models.ImageField(null=True, blank=True, upload_to=upload_path)
+    favs = models.ManyToManyField("users.User", related_name="nice_list", blank=True)
+
+    def get_nice_count(self):
+        return self.favs.count()
