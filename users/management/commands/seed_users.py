@@ -17,6 +17,8 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         total = options.get("total")
         seeder = Seed.seeder()
-        seeder.add_entity(User, total, {"is_staff": False, "is_superuser": False})
+        seeder.add_entity(
+            User, total, {"is_staff": False, "is_superuser": False, "avatar": None}
+        )
         seeder.execute()
         self.stdout.write(self.style.SUCCESS(f"{total} users created!"))

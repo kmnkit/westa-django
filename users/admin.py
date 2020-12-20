@@ -14,6 +14,14 @@ class UserAdmin(UserAdmin):
         ),
     )
 
-    list_display = ("email", "nickname", "birthday", "is_active", "is_staff")
+    list_display = (
+        "email",
+        "nickname",
+        "birthday",
+        "is_active",
+        "is_staff",
+        "get_following_count",
+        "get_followed_count",
+    )
 
     filter_horizontal = ()

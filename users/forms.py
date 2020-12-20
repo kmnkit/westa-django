@@ -1,4 +1,3 @@
-import re
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django import forms
 from .models import User
@@ -7,7 +6,15 @@ from .models import User
 class SignUpForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ("username", "email", "nickname", "birthday", "password1", "password2")
+        fields = (
+            "username",
+            "email",
+            "nickname",
+            "birthday",
+            "avatar",
+            "password1",
+            "password2",
+        )
 
     birthday = forms.DateField(
         label="생일",

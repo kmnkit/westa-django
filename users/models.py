@@ -16,10 +16,10 @@ class User(AbstractUser):
     def __str__(self):
         return self.email
 
-    def posts_count(self):
+    def get_posts_count(self):
         return self.posts.count()
 
-    posts_count.short_description = "게시물 수"
+    get_posts_count.short_description = "게시물 수"
 
     def upload_path(self, filename):
         if not self.pk:
@@ -27,7 +27,23 @@ class User(AbstractUser):
             self.id = self.pk = instance.id
         return f"user_avatar/{self.id}/{filename}"
 
-    avatar = models.ImageField(upload_to=upload_path)
+    avatar = models.ImageField(upload_to=upload_path, blank=True)
 
     def get_absolute_url(self):
         return reverse("users:user", kwargs={"pk": self.pk})
+
+    def get_avatar(self):
+        try:
+            return self.avatar.url
+        except ValueError:
+            return "/media/user_avatar/anonymous.jpeg"
+
+    def get_following_count(self):
+        return self.following_list.count()
+
+    get_following_count.short_description = "팔로잉 수"
+
+    def get_followed_count(self):
+        return self.followed_list.count()
+
+    get_followed_count.short_description = "팔로워 수"
