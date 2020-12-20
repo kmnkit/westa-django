@@ -1,0 +1,17 @@
+{% load on_follow %}
+{% on_followed post_user as on_followed_boolean %}
+{% on_following post_user as on_following_boolean %}
+
+<a 
+    class="w-24 h-10 grid place-items-center rounded-sm text-center hover:bg-blue-400 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 hover:text-white" 
+    href="{% url 'followers:toggle' post_user.pk %}">
+    <span class="text-black">
+        {% if on_followed_boolean and not on_following_boolean %}
+            맞팔로우
+        {% elif on_following_boolean %}
+            언팔로우
+        {% else %}
+            팔로우
+        {% endif %}
+    </span>
+</a>
