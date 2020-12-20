@@ -17,7 +17,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.getenv("DEBUG"))
 
-ALLOWED_HOSTS = ["westa-env.eba-meu6psda.ap-northeast-2.elasticbeanstalk.com"]
+ALLOWED_HOSTS = ["*.elasticbeanstalk.com"]
 
 
 # Application definition
