@@ -90,12 +90,12 @@ if DEBUG:
 else:
     DATABASES = {
         "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "HOST": "westa.clidrfbnacdl.ap-northeast-2.rds.amazonaws.com",
-            "NAME": "westa",
-            "USER": "westa_admin",
-            "PASSWORD": "kang7944",
-            "PORT": "5432",
+            "ENGINE": os.getenv("ENGINE"),
+            "HOST": os.getenv("HOST"),
+            "NAME": os.getenv("NAME"),
+            "USER": os.getenv("USER"),
+            "PASSWORD": os.getenv("PASSWORD"),
+            "PORT": os.getenv("PORT"),
         }
     }
 
