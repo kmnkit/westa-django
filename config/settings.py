@@ -38,6 +38,7 @@ PROJECT_APPS = [
     "favs.apps.FavsConfig",
     "posts.apps.PostsConfig",
     "users.apps.UsersConfig",
+    "followers.apps.FollowersConfig",
 ]
 
 THIRD_PARTY_APPS = ["django_seed"]
