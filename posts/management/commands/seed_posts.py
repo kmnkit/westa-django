@@ -20,11 +20,11 @@ class Command(BaseCommand):
             {
                 "description": lambda x: post_seeder.faker.sentence(),
                 "user": lambda x: random.choice(users),
-                "photo": lambda x: f"post_photos/{random.randint(1,32)}.webp",
+                "photo": lambda x: f"post_photos/{random.randint(1,31)}.webp",
             },
         )
         post_seeder.execute()
         posts = Post.objects.all()
         for post in posts:
-            post.nice.set(random.choices(users, k=random.randint(3, 11)))
+            post.favs.set(random.choices(users, k=random.randint(3, 11)))
         self.stdout.write(self.style.SUCCESS(f"100개의 {NAME} Seed가 모두 만들어졌습니다."))
