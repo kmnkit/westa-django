@@ -1,0 +1,8 @@
+<div class="w-full flex flex-col">
+    {% for comment in comments %}
+    <div>
+        <span class="font-bold">{{comment.user.nickname}}</span>
+        <span>{{comment.text}}</span>
+    </div>
+    {% endfor %}
+</div>

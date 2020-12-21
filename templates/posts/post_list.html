@@ -8,7 +8,7 @@
 <main class="flex justify-center">
     <div class="container w-96 h-full">
         {% for post in posts %}
-            {% include 'mixins/post_card.html' with post=post %}
+            {% include 'mixins/posts/post_card.html' with post=post form=form %}
         {% endfor %}
             
     </div>

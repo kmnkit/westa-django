@@ -1,0 +1,44 @@
+<!-- 게시물 작성자 등을 포함한 개별 포스트 카드 전체 -->
+{% load on_favs %}
+{% on_favs post as on_favs_boolean %}
+
+<div class="w-full h-auto mt-14 mb-5 flex flex-col border-2 border-gray-300 border-opacity-60">
+    <div class="w-full h-10 flex justify-between mt-3 mb-10 px-3">
+        <div>
+            {% include 'mixins/user_avatar.html' with avatar=post.user.get_avatar %}
+            <a href="{% url 'users:user' post.user.pk %}">
+                <span class="h-full font-bold inline-block align-middle">{{post.user.username}}</span>
+            </a>
+        </div>
+        <div>
+            {% include 'mixins/follow_button.html' with post_user=post.user %}
+        </div>
+    </div>
+    <div class="h-72">
+        {% include 'mixins/posts/post_photo.html' with photo=post.photo.url %}
+    </div>
+    <div class="w-full h-auto px-3 py-3">
+        <div class="container w-full h-16 flex flex-col justify-between py-1">
+            <div class="w-full flex justify-between">
+                <span>{{post.description}}</span>
+                <a href="{% url 'favs:toggle' post.pk %}">
+                    <span 
+                        class="text-3xl text-black hover:text-pink-300 {% if on_favs_boolean %}text-red-400{% endif %}">
+                        <i class="fas fa-heart fa-xl"></i>
+                    </span>
+                </a>
+            </div>
+            <span>{{post.get_nice_count}}명의 유저가 이 게시물을 좋아합니다.</span>
+        </div>
+        <div class="w-full mt-2">
+            {% include 'comments/comment_list.html' with comments=post.comments.all %}
+            <form 
+                action="{% url 'comments:create' post.pk %}"
+                method="POST" class="w-full h-10 py-1 bottom-0"
+                >
+                {% csrf_token %}
+                {{form}}
+            </form>
+        </div>
+    </div>
+</div>

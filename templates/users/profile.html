@@ -22,7 +22,7 @@
     </div>
     <div class="container w-full grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3 mt-10">
         {% for post in user_obj.posts.all %}
-            {% include 'mixins/post_photo.html' with photo=post.photo.url h_and_w='w-full h-72' %}
+            {% include 'mixins/posts/post_photo.html' with photo=post.photo.url h_and_w='w-full h-72' %}
         {% endfor %}
     </div>
 </main>
