@@ -11,7 +11,7 @@ urlpatterns = [
     path("follower/", include("followers.urls", namespace="followers")),
     path("favs/", include("favs.urls", namespace="favs")),
     # path("chat/", include("chats.urls", namespace="chats")),
-    # path("comment/", include("comments.urls", namespace="comments")),
+    path("comment/", include("comments.urls", namespace="comments")),
     path("admin/", admin.site.urls),
 ]
 
