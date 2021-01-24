@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block page_title %}
+    {{post.user.nickname}}의 게시물
+{% endblock page_title %}
+    
+
+{% block content %}    
+    <main class="flex justify-center">
+        <div class="container w-96 h-full">
+            {% include 'mixins/posts/post_card.html' with post=post form=form %}
+        </div>
+    </main>
+{% endblock content %}
+    

@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="h-72">
-        {% include 'mixins/posts/post_photo.html' with photo=post.photo.url %}
+        {% include 'mixins/posts/post_photo.html' with photo=post.photo.url pk=post.pk %}
     </div>
     <div class="w-full h-auto px-3 py-3">
         <div class="container w-full h-16 flex flex-col justify-between py-1">
@@ -31,7 +31,7 @@
             <span>{{post.get_nice_count}}명의 유저가 이 게시물을 좋아합니다.</span>
         </div>
         <div class="w-full mt-2">
-            {% include 'comments/comment_list.html' with comments=post.comments.all %}
+            {% include 'comments/comment_list.html' with comments=post.comments.all %}            
             <form 
                 action="{% url 'comments:create' post.pk %}"
                 method="POST" class="w-full h-10 py-1 bottom-0"

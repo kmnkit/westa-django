@@ -7,6 +7,7 @@ from posts.models import Post
 class FavListView(ListView):
     model = FavList
     template_name = "favs/fav_list.html"
+    paginate_by = 4
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

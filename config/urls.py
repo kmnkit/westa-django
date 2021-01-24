@@ -1,3 +1,4 @@
+import debug_toolbar
 from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
@@ -13,6 +14,7 @@ urlpatterns = [
     # path("chat/", include("chats.urls", namespace="chats")),
     path("comment/", include("comments.urls", namespace="comments")),
     path("admin/", admin.site.urls),
+    path("__debug__/", include(debug_toolbar.urls)),
 ]
 
 if settings.DEBUG:

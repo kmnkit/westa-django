@@ -4,6 +4,8 @@
     </div>
     <div class="text-xl flex flex-wrap content-center menu-item">
         {% if user.is_authenticated %}
+            <a class="link user-ctrl" href="{% url 'posts:create' %}"><i class="fas fa-edit fa-2xl"></i></a>
+        
             <a class="link user-ctrl" href="{% url 'favs:favs' %}">좋아요 한 게시물</a>
             <a class="link user-ctrl" href="{% url 'users:logout' %}">로그아웃</a>
             <a class="link user-ctrl" href="{% url 'users:user' user.pk %}">프로필</a>

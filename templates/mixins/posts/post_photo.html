@@ -1,4 +1,6 @@
 <!-- 게시물의 사진 부분만 별도 컴포넌트화 -->
-<div 
+<a href="{% url 'posts:post' pk %}">
+    <div 
     style="background-image:url({{photo}});" 
     class="bg-center bg-cover {{h_and_w|default:'w-full h-full'}}"></div>
+</a>

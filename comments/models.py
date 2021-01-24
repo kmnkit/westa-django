@@ -8,7 +8,7 @@ class Comment(TimeStampedModel):
         "users.User", related_name="comments", on_delete=models.CASCADE
     )
     post = models.ForeignKey(
-        "posts.Post", related_name="comments", on_delete=models.CASCADE
+        "posts.Post", related_name="comment_set", on_delete=models.CASCADE
     )
     text = models.TextField()
 

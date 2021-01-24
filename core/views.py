@@ -1,10 +1,8 @@
-from django.shortcuts import redirect, render
-from posts.models import Post
+from django.shortcuts import redirect, render, reverse
 
 
 def index(request):
     if request.user.is_authenticated:
-        posts = Post.objects.all()
-        return render(request, "posts/post_list.html", {"posts": posts})
+        return redirect(reverse("posts:list"))
     else:
         return render(request, "home.html")

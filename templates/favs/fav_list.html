@@ -5,11 +5,24 @@
 {% endblock page_title %}
     
 {% block content %}
-<main class="flex justify-center">
+<main class="flex justify-center flex-col px-2 mt-2">
     <div class="container w-full grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3 mt-10">
         {% for post in favs.posts.all %}
-            {% include 'mixins/posts/post_photo.html' with photo=post.photo.url h_and_w='w-full h-72' %}
+            {% include 'mixins/posts/post_photo.html' with photo=post.photo.url h_and_w='w-full h-72' pk=post.pk %}
         {% endfor %}
+    </div>
+    <div class="mt-2 flex justify-center">
+        <div>
+            {% if page_obj.has_previous %}
+                <a class="bg-purple-400 hover:bg-purple-600 text-white font-bold py-1 px-2 rounded" href="?page={{page_obj.previous_page_number}}">Previous</a>
+            {% endif %}
+            <span class="font-bold text-purple-600">
+            Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+            </span>
+            {% if page_obj.has_next  %}
+                <a class="bg-purple-400 hover:bg-purple-600 text-white font-bold py-1 px-2 rounded" href="?page={{page_obj.next_page_number}}">Next</a>
+            {% endif %}
+        </div>
     </div>
 </main>
 {% endblock content %}
